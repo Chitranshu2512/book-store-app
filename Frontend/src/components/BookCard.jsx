@@ -2,13 +2,17 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 const BookCard = ({book, role}) => {
-    const {name, author, imageUrl} = book;
+    const {name, author, imageUrl, downloadLink} = book;
   return (
     <div className='book-card'>
         <img src={imageUrl} alt={name} className='book-image'/>
         <div className="book-details">
             <h3>{name}</h3>
             <p>{author}</p>
+            {
+              role === "student" &&
+              <button><Link to={downloadLink} className='btn-link'>Read</Link></button>
+            }
         </div>
         {role === "admin" &&
         <div className="book-actions">

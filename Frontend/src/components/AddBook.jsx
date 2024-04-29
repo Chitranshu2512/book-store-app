@@ -6,11 +6,12 @@ const AddBook = () => {
     const [name, setName] = useState('')
     const [author, setAuthor] = useState('')
     const [imageUrl, setImageUrl] = useState('')
+    const [downloadLink, setDownloadLink] = useState('')
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3001/book/add', {name, author, imageUrl})
+        axios.post('http://localhost:3001/book/add', {name, author, imageUrl, downloadLink})
         .then(res => { 
             if(res.data.added) {
                 navigate('/books')
@@ -40,6 +41,11 @@ const AddBook = () => {
           <label htmlFor="image">Image URL:</label>
           <input type="text" id="image" name="image" 
           onChange={(e) => setImageUrl(e.target.value)}/>
+        </div>
+        <div className="form-group">
+          <label htmlFor="url">Download URL:</label>
+          <input type="text" id="url" name="url" 
+          onChange={(e) => setDownloadLink(e.target.value)}/>
         </div>
         <button type="submit">Add </button>
       </form>

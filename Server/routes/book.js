@@ -5,11 +5,12 @@ import { verifyAdmin } from './auth.js';
 
 router.post('/add',verifyAdmin, async (req, res) => {
     try {
-        const {name, author, imageUrl} = req.body;
+        const {name, author, imageUrl, downloadLink} = req.body;
         const newbook = new Book({
             name,
             author,
-            imageUrl
+            imageUrl,
+            downloadLink
         })
         await newbook.save()
         return res.json({added: true})

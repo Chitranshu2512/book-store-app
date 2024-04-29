@@ -12,12 +12,12 @@ const Navbar = ({role}) => {
             <Link to="/books" className='navbar-link'>Books</Link>
             {role === "admin" && <>
               <Link to="/addbook" className="navbar-link">Add Book</Link>
-              <Link to="/addstudent" className="navbar-link">Add Student</Link>
               <Link to="/dashboard" className="navbar-link">Dashboard</Link>
             </>
             }
             {role === "" ?
-            <Link to="/login" className='navbar-link'>Login</Link>
+            <span><Link to="/login" className='navbar-link'>Login</Link>
+            <Link to="/addstudent" className="navbar-link">sign up</Link></span>
              : <Link to="/logout" className='navbar-link'>Logout</Link>
              }
             
